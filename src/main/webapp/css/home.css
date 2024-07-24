@@ -1,0 +1,60 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.menu {
+    background: -webkit-linear-gradient(90deg, #354b75,#4c6ca8,#6f89b9,#789bfb);
+    background: linear-gradient(90deg, #354b75,#4c6ca8,#6f89b9,#789bfb);
+    color: white;
+    padding: 10px 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.menu ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+}
+
+.menu ul li a:hover {
+    background: #354b75;
+}
+
+.titulo {
+    font-size: 1.8em;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('/img/essa.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #4C6CA8;
+}
+
+
+

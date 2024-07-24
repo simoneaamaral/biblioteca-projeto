@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: -webkit-linear-gradient(90deg, #85a9b9,#8497b5,#c8c9d2);
+    background: linear-gradient(90deg, #85a9b9,#8497b5,#c8c9d2);
+}
+
+
+.container {
+    width: 30%;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+   }
+
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.container .form-group {
+    margin-bottom: 15px;
+}
+
+.container label {
+    display: block;
+    margin-bottom: 5px; /
+}
+
+.container input[type="text"],
+.container input[type="number"],
+.container input[type="submit"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.container input[type="submit"] {
+    background:-webkit-linear-gradient(90deg,#002882,#33539b,#667eb4);
+    background:linear-gradient(90deg,#002882,#33539b,#667eb4);
+    color: white;
+    cursor: pointer;
+
+}
+

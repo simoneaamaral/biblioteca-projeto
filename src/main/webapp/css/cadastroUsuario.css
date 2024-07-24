@@ -1,0 +1,82 @@
+body {
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background: -webkit-linear-gradient(90deg, #85a9b9,#8497b5,#c8c9d2);
+   background: linear-gradient(90deg, #85a9b9,#8497b5,#c8c9d2);
+}
+
+.container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #f9f5f9;
+   border-radius: 20px;
+   padding: 20px;
+   width: 40%;
+   height: 65%;
+
+}
+
+.formulario {
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+
+}
+
+h1 {
+   font-size: 35px;
+   color: #333;
+   margin-bottom: 50px;
+
+}
+
+.form-group {
+   margin-bottom: 20px;
+   text-align: left;
+}
+
+label {
+   display: block;
+   margin-bottom: 8px;
+   color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+   width: 100%;
+   padding: 12px;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   font-size: 16px;
+    background: #eef5f6;
+   transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+   border-color: #007bff;
+   outline: none;
+}
+
+.btn-cadastrar {
+   background:-webkit-linear-gradient(90deg,#002882,#33539b,#667eb4);
+   background:linear-gradient(90deg,#002882,#33539b,#667eb4);
+   color: #fff;
+   border: none;
+   padding: 12px 20px;
+   font-size: 16px;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.btn-cadastrar:hover {
+   background: #667EB4;
+}

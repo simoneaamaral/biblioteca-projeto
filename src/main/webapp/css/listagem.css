@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: -webkit-linear-gradient(90deg, #85a9b9,#8497b5,#c8c9d2);
+    background: linear-gradient(90deg, #85a9b9,#8497b5,#c8c9d2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.container-menu {
+    background: -webkit-linear-gradient(90deg, #354b75,#4c6ca8,#6f89b9,#789bfb);
+    background: linear-gradient(90deg, #354b75,#4c6ca8,#6f89b9,#789bfb);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.menu ul li {
+    display: inline;
+}
+
+.menu ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu ul li a:hover {
+    background: #354b75;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 80px auto 20px;
+    padding: 50px;
+    background-color: #CDD5DE;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+
+.container table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #efeff3;
+    margin-top: 20px;
+}
+
+.container th, .container td {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: left;
+}
+
+
+.container tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+/
+
+}
+
+
+.container a:last-child {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-edit {
+    background: #3c3cc5;
+    border-radius: 15px;
+
+}
+
+.btn-excluir{
+    background: #8f3333;
+    border-radius: 15px;
+
+
+}
+
+.text-edit{
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 10px;
+
+
+}
+
+.text-excluir{
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 10px;
+
+}

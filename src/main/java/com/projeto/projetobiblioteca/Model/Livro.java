@@ -18,7 +18,6 @@ public class Livro {
     @Column(name = "quantidade", nullable = false)
     private int quantidade;
 
-    // Construtores, getters e setters
     public Livro() {}
 
     public Livro(String isbn, String titulo, String categoria, int quantidade) {

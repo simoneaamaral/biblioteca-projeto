@@ -1,22 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 18/07/2024
-  Time: 21:40
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Home</title>
+  <title>Inicio</title>
 </head>
+<link rel="stylesheet" type="text/css" href="./css/home.css?v=1.0">
+<link rel="stylesheet" type="text/css" href="./css/footer.css">
 <body>
-<h1>Bem-vindo à Biblioteca</h1>
-<ul>
-  <li><a href="livros?action=cadastro">Cadastrar Livro</a></li>
-  <li><a href="livros">Listar Livros</a></li>
-</ul>
+
+<div class="container">
+  <nav class="menu">
+    <ul>
+      <li><a href="login.jsp">Login</a></li>
+      <li><a href="livros?action=cadastro">Cadastrar Livro</a></li>
+      <li><a href="livros">Listar Livros</a></li>
+      <li><a href="logout">Sair</a></li>
+
+    </ul>
+  </nav>
+  <div class="content">
+    <h1 class="titulo">Coleção Literária de Forma Simples e Eficiente</h1>
+    <c:if test="${not empty sessionScope.mensagemSucesso}">
+         <script>
+        alert("${sessionScope.mensagemSucesso}");
+      </script>
+    </c:if>
+
+    <c:remove var="mensagemSucesso" scope="session" />
+  </div>
+</div>
+<footer> ©2024 Todos os direitos reservados</footer>
 </body>
 </html>
 

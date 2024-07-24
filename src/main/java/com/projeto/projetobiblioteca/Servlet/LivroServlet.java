@@ -2,16 +2,19 @@ package com.projeto.projetobiblioteca.Servlet;
 
 import com.projeto.projetobiblioteca.DAO.LivroDAO;
 import com.projeto.projetobiblioteca.Model.Livro;
-
+import com.projeto.projetobiblioteca.Model.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/livros")
+// Esta classe vai lidar com as requisições para a página de "/livros"
 public class LivroServlet extends HttpServlet {
     private LivroDAO livroDAO;
 
@@ -21,9 +24,43 @@ public class LivroServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Verificando se a pessoa está logada.
+        HttpSession session = request.getSession(false);
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+
+        if (usuarioLogado == null) {
+            request.setAttribute("mensagemErro", "Você precisa estar logado para realizar esta ação.");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
+        }
+
         String action = request.getParameter("action");
 
+        if ("inserir".equals(action)) {
+            inserirLivro(request, response);
+        } else if ("atualizar".equals(action)) {
+            atualizarLivro(request, response);
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+        // Aqui, pegamos a ação que a pessoa quer realizar (cadastrar, editar ou excluir um livro).
+        String action = request.getParameter("action");
+
+        if ("cadastro".equals(action) || "editar".equals(action) || "excluir".equals(action)) {
+            // Se a pessoa não estiver logada, mostramos uma mensagem de erro e pedimos para ela fazer login
+            if (usuarioLogado == null) {
+                request.setAttribute("mensagemErro", "Você precisa estar logado para realizar esta ação.");
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+                return;
+            }
+        }
+
+        // Se não houver ação, listamos todos os livros
         if (action == null) {
             listarLivros(request, response);
         } else {
@@ -44,17 +81,7 @@ public class LivroServlet extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-
-        if ("inserir".equals(action)) {
-            inserirLivro(request, response);
-        } else if ("atualizar".equals(action)) {
-            atualizarLivro(request, response);
-        }
-    }
-
+    // Este método lista todos os livros
     private void listarLivros(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Livro> livros = livroDAO.listarTodos();
         if (livros == null || livros.isEmpty()) {
@@ -66,10 +93,12 @@ public class LivroServlet extends HttpServlet {
         request.getRequestDispatcher("/listagem.jsp").forward(request, response);
     }
 
+    // Este método mostra o formulário para cadastrar um novo livro
     private void mostrarFormCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+        request.getRequestDispatcher("/cadastroLivro.jsp").forward(request, response);
     }
 
+    // Este método mostra o formulário para editar um livro existente
     private void mostrarFormEdicao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
         Livro livro = livroDAO.obterPorIsbn(isbn);
@@ -77,6 +106,7 @@ public class LivroServlet extends HttpServlet {
         request.getRequestDispatcher("/editarLivro.jsp").forward(request, response);
     }
 
+    // Este método adiciona um novo livro
     private void inserirLivro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
         String titulo = request.getParameter("titulo");
@@ -86,7 +116,7 @@ public class LivroServlet extends HttpServlet {
         // Verifica se o livro já existe pelo ISBN
         if (livroDAO.obterPorIsbn(isbn) != null) {
             request.setAttribute("mensagemErro", "Livro já existe!");
-            request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
             return;
         }
 
@@ -97,6 +127,7 @@ public class LivroServlet extends HttpServlet {
     }
 
 
+    // Este método atualiza um livro existente
     private void atualizarLivro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
         String titulo = request.getParameter("titulo");
@@ -109,6 +140,7 @@ public class LivroServlet extends HttpServlet {
         response.sendRedirect("livros");
     }
 
+    // Este método exclui um livro
     private void excluirLivro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
         livroDAO.excluir(isbn);

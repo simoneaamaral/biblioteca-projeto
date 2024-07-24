@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: -webkit-linear-gradient(90deg, #85a9b9,#8497b5,#c8c9d2);
+    background: linear-gradient(90deg, #85a9b9,#8497b5,#c8c9d2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+ .container {
+
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    background-color:#f0f0f0 ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.left img {
+    max-width: 100%;
+    height: auto;
+}
+
+.right {
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    }
+
+form {
+    max-width: 300px;
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color:#CDD5DE ;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background:-webkit-linear-gradient(90deg,#002882,#33539b,#667eb4);
+    background:linear-gradient(90deg,#002882,#33539b,#667eb4);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+
+input[type="submit"]:hover {
+    background: #667EB4;
+}
+
+a {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+p {
+    font-weight: bold;
+}
+
+
